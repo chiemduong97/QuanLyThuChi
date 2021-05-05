@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_chi"
+        android:title="Tổng chi"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_chi" />
+    <item android:id="@+id/menu_thu"
+        android:title="Tổng thu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_thu"/>
+    <item android:id="@+id/menu_thong_ke_nam"
+        android:title="Thống kê năm"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/icon_barchar"/>
+</menu>
