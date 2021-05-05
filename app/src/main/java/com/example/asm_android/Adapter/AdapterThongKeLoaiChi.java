@@ -13,9 +13,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.LoaiChi;
 import com.example.asm_android.Model.LoaiThu;
+import com.example.asm_android.Model.User;
 import com.example.asm_android.QuanLyThuChi;
 import com.example.asm_android.R;
 import com.example.asm_android.SQLite.KhoangChiDAO;
@@ -95,7 +97,14 @@ public class AdapterThongKeLoaiChi extends RecyclerView.Adapter<RecyclerView.Vie
         LoaiChiDAO loaiChiDAO;
         KhoangChiDAO khoangChiDAO;
         loaiChiDAO = new LoaiChiDAO(context);
-        ArrayList<LoaiChi> dsLoaiChi=loaiChiDAO.getAllLoaiChi(((QuanLyThuChi)context).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)context).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)context).UserActive();
+        }
+        ArrayList<LoaiChi> dsLoaiChi=loaiChiDAO.getAllLoaiChi(user.getId_user());
         khoangChiDAO=new KhoangChiDAO(context);
         ArrayList<Integer> abc=new ArrayList<>();
         abc.add(dsLoaiChi.get(position).getId_loaichi());

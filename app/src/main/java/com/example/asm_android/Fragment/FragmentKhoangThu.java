@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asm_android.Adapter.AdapterKhoangThu;
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangThu;
 import com.example.asm_android.Model.LoaiThu;
 import com.example.asm_android.Model.User;
@@ -58,7 +59,12 @@ public class FragmentKhoangThu extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_khoang_thu, container, false);
         recyclerView=view.findViewById(R.id.recyclerKhoangThu);
-        user=((QuanLyThuChi)getContext()).UserActive();
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
         FloatingActionButton floatingActionButton=view.findViewById(R.id.ThemKhoangThu);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
 

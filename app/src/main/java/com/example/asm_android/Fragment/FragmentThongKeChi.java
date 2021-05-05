@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asm_android.Adapter.AdapterThongKeKhoangChi;
 import com.example.asm_android.Adapter.AdapterThongKeLoaiChi;
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.LoaiChi;
 import com.example.asm_android.Model.User;
@@ -55,7 +56,12 @@ public class FragmentThongKeChi extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        user=((QuanLyThuChi)getContext()).UserActive();
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
         View view=inflater.inflate(R.layout.fragment_thong_ke_chi, container, false);
         RecyclerView recyclerView=view.findViewById(R.id.recyclerThongKeChi);
         TextView textView=view.findViewById(R.id.tv_ThongKeTongChi);
@@ -123,7 +129,14 @@ public class FragmentThongKeChi extends Fragment {
         LoaiChiDAO loaiChiDAO;
         KhoangChiDAO khoangChiDAO;
         loaiChiDAO = new LoaiChiDAO(getContext());
-        ArrayList<LoaiChi> dsLoaiChi=loaiChiDAO.getAllLoaiChi(((QuanLyThuChi)getActivity()).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
+        ArrayList<LoaiChi> dsLoaiChi=loaiChiDAO.getAllLoaiChi(user.getId_user());
         khoangChiDAO=new KhoangChiDAO(getContext());
         ArrayList<Integer> abc=new ArrayList<>();
         abc.add(dsLoaiChi.get(position).getId_loaichi());

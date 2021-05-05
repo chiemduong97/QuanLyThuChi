@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.KhoangThu;
 import com.example.asm_android.Model.LoaiChi;
@@ -52,8 +53,12 @@ public class FragmentThongKeTheoNamViewPager extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_thong_ke_theo_nam_viewpager,null);
-        user=((QuanLyThuChi)getContext()).UserActive();
-
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
         loaiChiDAO=new LoaiChiDAO(getContext());
         ArrayList<LoaiChi> loaiChis=loaiChiDAO.getAllLoaiChi(user.getId_user());
         arrayList1=new ArrayList<>();

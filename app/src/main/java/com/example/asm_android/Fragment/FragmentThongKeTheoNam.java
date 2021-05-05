@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.KhoangThu;
 import com.example.asm_android.Model.LoaiChi;
@@ -65,7 +66,12 @@ public class FragmentThongKeTheoNam extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_thong_ke_theo_nam, null);
-        user=((QuanLyThuChi)getContext()).UserActive();
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
         BarChart barChart=view.findViewById(R.id.BieuDoTheoNam);
         TextView NamThongKe=view.findViewById(R.id.ThongKeNam);
 

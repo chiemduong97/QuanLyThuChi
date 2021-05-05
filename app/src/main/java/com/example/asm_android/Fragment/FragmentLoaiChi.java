@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asm_android.Adapter.AdapterLoaiChi;
 import com.example.asm_android.Adapter.AdapterUser;
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.LoaiChi;
 import com.example.asm_android.Model.User;
 import com.example.asm_android.QuanLyThuChi;
@@ -47,7 +48,12 @@ public class FragmentLoaiChi extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_loai_chi, container, false);
         recyclerView=view.findViewById(R.id.recyclerLoaiChi);
-        user=((QuanLyThuChi)getContext()).UserActive();
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
         FloatingActionButton floatingActionButton=view.findViewById(R.id.ThemLoaiChi);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         loaiChiDAO=new LoaiChiDAO(getContext());

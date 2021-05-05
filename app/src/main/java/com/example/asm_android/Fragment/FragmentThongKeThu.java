@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asm_android.Adapter.AdapterThongKeKhoangThu;
 import com.example.asm_android.Adapter.AdapterThongKeLoaiThu;
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangThu;
 import com.example.asm_android.Model.LoaiThu;
 import com.example.asm_android.Model.User;
@@ -55,7 +56,12 @@ public class FragmentThongKeThu extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        user=((QuanLyThuChi)getContext()).UserActive();
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
         View view=inflater.inflate(R.layout.fragment_thong_ke_thu, container, false);
         TextView textView=view.findViewById(R.id.tv_ThongKeTongThu);
         textView.setText("Tổng thu tất cả: "+TongThu());
@@ -124,7 +130,14 @@ public class FragmentThongKeThu extends Fragment {
         LoaiThuDAO loaiThuDAO;
         KhoangThuDAO khoangThuDAO;
         loaiThuDAO = new LoaiThuDAO(getContext());
-        ArrayList<LoaiThu> dsLoaiThu=loaiThuDAO.getAllLoaiThu(((QuanLyThuChi)getActivity()).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
+        ArrayList<LoaiThu> dsLoaiThu=loaiThuDAO.getAllLoaiThu(user.getId_user());
         khoangThuDAO=new KhoangThuDAO(getContext());
         ArrayList<Integer> abc=new ArrayList<>();
         abc.add(dsLoaiThu.get(position).getId_loaithu());

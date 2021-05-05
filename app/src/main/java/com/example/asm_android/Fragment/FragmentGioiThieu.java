@@ -1,6 +1,7 @@
 package com.example.asm_android.Fragment;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.asm_android.Adapter.AdapterRecycleGioiThieu;
 import com.example.asm_android.Adapter.RecycleAvatarAdapter;
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.IconGioiThieu;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.KhoangThu;
@@ -244,64 +246,10 @@ public class FragmentGioiThieu extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                if(position==0){
-                    if((((QuanLyThuChi)getContext()).UserActive().getUser_name().equals("chiemduong97"))){
-                        FragmentManager fragmentManager=getFragmentManager();
-                        FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.frameLayout,new FragmentTaiKhoan()).commit();
-                        ((QuanLyThuChi)getContext()).setTitle("QUẢN LÝ TÀI KHOẢN");
-                    }
-                    else
-                        Toast.makeText(getContext(),"Bạn không có quyền truy cập!",Toast.LENGTH_SHORT).show();
-                }
-                if(position==1){
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout,new FragmentThongKeTheoNamViewPager()).commit();
-                    ((QuanLyThuChi)getContext()).setTitle("THỐNG KÊ THEO NĂM");
-
-                }
-                if(position==2){
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout,new FragmentLoaiThu()).commit();
-                    ((QuanLyThuChi)getContext()).setTitle("LOẠI THU");
-                }
-                if(position==3){
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout,new FragmentLoaiChi()).commit();
-                    ((QuanLyThuChi)getContext()).setTitle("LOẠI CHI");
-
-                }
-                if(position==4){
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout,new FragmentKhoangThu()).commit();
-                    ((QuanLyThuChi)getContext()).setTitle("KHOẢNG THU");
-
-                }
-                if(position==5){
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout,new FragmentKhoangChi()).commit();
-                    ((QuanLyThuChi)getContext()).setTitle("KHOẢNG CHI");
-
-                }
-                if(position==6){
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout,new FragmentThongKeThu()).commit();
-                    ((QuanLyThuChi)getContext()).setTitle("BIỂU ĐỒ THU");
-
-                }
-                if(position==7){
-                    FragmentManager fragmentManager=getFragmentManager();
-                    FragmentTransaction fragmentTransaction= fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout,new FragmentThongKeChi()).commit();
-                    ((QuanLyThuChi)getContext()).setTitle("BIỂU ĐỒ CHI");
-
-                }
+                Intent intent=new Intent(getActivity(), MainActivity2.class);
+                intent.putExtra("danhmuc",position);
+                intent.putExtra("user",((QuanLyThuChi)getContext()).UserActive().getUser_name());
+                startActivity(intent);
             }
 
             @Override
