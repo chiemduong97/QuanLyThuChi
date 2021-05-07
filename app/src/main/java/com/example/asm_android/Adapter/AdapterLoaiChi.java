@@ -14,8 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.LoaiChi;
+import com.example.asm_android.Model.User;
 import com.example.asm_android.QuanLyThuChi;
 import com.example.asm_android.R;
 import com.example.asm_android.SQLite.KhoangChiDAO;
@@ -173,7 +175,14 @@ public class AdapterLoaiChi extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return  check;
     }
     public void CapNhatLoaiChi(){
-        dsLoaiChi=loaiChiDAO.getAllLoaiChi(((QuanLyThuChi)context).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)context).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)context).UserActive();
+        }
+        dsLoaiChi=loaiChiDAO.getAllLoaiChi(user.getId_user());
         AdapterLoaiChi adapterLoaiChi=new AdapterLoaiChi(context,dsLoaiChi,recyclerView);
         recyclerView.setAdapter(adapterLoaiChi);
     }

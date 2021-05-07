@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.KhoangThu;
 import com.example.asm_android.Model.LoaiChi;
@@ -73,7 +74,14 @@ public class AdapterUser extends RecyclerView.Adapter<RecyclerView.ViewHolder>  
     public void XoaUser(int position){
         for(int i=0;i<dsUser.size();i++){
             try {
-                if(((QuanLyThuChi)context).UserActive().getUser_name().equals(dsUser.get(position).getUser_name())){
+                User user;
+                try{
+                    user=((QuanLyThuChi)context).UserActive();
+                }
+                catch (Exception exception){
+                    user=((MainActivity2)context).UserActive();
+                }
+                if(user.getUser_name().equals(dsUser.get(position).getUser_name())){
                     Toast.makeText(context,"Đang đăng nhập tài khoản này!",Toast.LENGTH_SHORT).show();
                     break;
                 }

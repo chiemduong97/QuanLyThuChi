@@ -18,8 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangThu;
 import com.example.asm_android.Model.LoaiThu;
+import com.example.asm_android.Model.User;
 import com.example.asm_android.Model.date;
 import com.example.asm_android.QuanLyThuChi;
 import com.example.asm_android.R;
@@ -94,7 +96,14 @@ public class AdapterKhoangThu extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
     public void CapNhatKhoangThu(){
         loaiThuDAO=new LoaiThuDAO(context);
-        ArrayList<LoaiThu> loaiThus=loaiThuDAO.getAllLoaiThu(((QuanLyThuChi)context).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)context).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)context).UserActive();
+        }
+        ArrayList<LoaiThu> loaiThus=loaiThuDAO.getAllLoaiThu(user.getId_user());
         arrayList1=new ArrayList<>();
         for(int i=0;i<loaiThus.size();i++){
             arrayList1.add(loaiThus.get(i).getId_loaithu());
@@ -152,7 +161,14 @@ public class AdapterKhoangThu extends RecyclerView.Adapter<RecyclerView.ViewHold
                     ImageView btnSuaNgayThu=view.findViewById(R.id.btnSuaNgayThu);
 
                     loaiThuDAO=new LoaiThuDAO(context);
-                    ArrayList<LoaiThu> loaiThus=loaiThuDAO.getAllLoaiThu(((QuanLyThuChi)context).UserActive().getId_user());
+                    User user;
+                    try{
+                        user=((QuanLyThuChi)context).UserActive();
+                    }
+                    catch (Exception exception){
+                        user=((MainActivity2)context).UserActive();
+                    }
+                    ArrayList<LoaiThu> loaiThus=loaiThuDAO.getAllLoaiThu(user.getId_user());
                     ArrayList<String> arrayList=new ArrayList<String>();
                     for(int j=0;j<loaiThus.size();j++){
                         arrayList.add(loaiThus.get(j).getLoaithu_name());

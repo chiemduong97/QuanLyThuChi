@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="THÊM KHOẢNG THU"
         android:textSize="16dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="10dp"
         android:background="@color/orange"
@@ -19,7 +19,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
         <EditText
             android:id="@+id/etThemTenKhoangThu"
             android:layout_width="match_parent"
@@ -29,14 +32,15 @@
             android:hint="Nhập tên khoảng thu"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="5dp"/>
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
         <EditText
             android:id="@+id/etThemSoLuongKhoangThu"
             android:layout_width="match_parent"
@@ -46,35 +50,9 @@
             android:hint="Nhập số lượng"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="5dp"/>
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/etChonLoaiThu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Loại Thu"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="15dp"/>
-        <Spinner
-            android:id="@+id/spinnerThemKhoangThu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:spinnerMode="dropdown" />
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,7 +60,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
             <EditText
                 android:id="@+id/etThemNgayThu"
                 android:enabled="false"
@@ -105,5 +86,29 @@
             android:src="@mipmap/ic_date"
             android:layout_gravity="center"/>
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/etChonLoaiThu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Loại Thu"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:paddingLeft="15dp"/>
+        <Spinner
+            android:id="@+id/spinnerThemKhoangThu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
 </LinearLayout>

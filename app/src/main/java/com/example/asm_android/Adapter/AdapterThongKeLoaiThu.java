@@ -71,7 +71,14 @@ public class AdapterThongKeLoaiThu extends RecyclerView.Adapter<RecyclerView.Vie
         ThongKeKhoangThuTenLoaiThu.setText(dsLoaiThu.get(position).getLoaithu_name());
         RecyclerView recyclerView=view.findViewById(R.id.recyclerThongKeKhoangThu);
         LoaiThuDAO loaiThuDAO=new LoaiThuDAO(context);
-        ArrayList<LoaiThu> loaiThus=loaiThuDAO.getAllLoaiThu(((QuanLyThuChi)context).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)context).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)context).UserActive();
+        }
+        ArrayList<LoaiThu> loaiThus=loaiThuDAO.getAllLoaiThu(user.getId_user());
         ArrayList<Integer> arrayList1=new ArrayList<>();
         for(int i=0;i<loaiThus.size();i++){
             if(dsLoaiThu.get(position).getId_loaithu()==loaiThus.get(i).getId_loaithu())

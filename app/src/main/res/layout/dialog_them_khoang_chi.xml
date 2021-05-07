@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="THÊM KHOẢNG CHI"
         android:textSize="16dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="10dp"
         android:background="@color/orange"
@@ -19,7 +19,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
         <EditText
             android:id="@+id/etThemTenKhoangChi"
             android:layout_width="match_parent"
@@ -29,14 +32,15 @@
             android:hint="Nhập tên khoảng chi"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="5dp"/>
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
         <EditText
             android:id="@+id/etThemSoLuongKhoangChi"
             android:layout_width="match_parent"
@@ -46,10 +50,40 @@
             android:hint="Nhập số lượng"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="5dp"/>
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <EditText
+                android:id="@+id/etThemNgayChi"
+                android:enabled="false"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Ngày chi"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <ImageView
+            android:id="@+id/btnThemNgayChi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:src="@mipmap/ic_date"
+            android:layout_gravity="center"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,7 +99,7 @@
             android:textSize="16dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
             android:paddingLeft="15dp"/>
         <Spinner
             android:id="@+id/spinnerThemKhoangChi"
@@ -75,35 +109,4 @@
             android:layout_weight="1"
             android:spinnerMode="dropdown" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <EditText
-                android:id="@+id/etThemNgayChi"
-                android:enabled="false"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Ngày chi"
-                android:textSize="16dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_margin="5dp"
-                android:paddingLeft="15dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <ImageView
-            android:id="@+id/btnThemNgayChi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:src="@mipmap/ic_date"
-            android:layout_gravity="center"/>
-    </LinearLayout>
-
 </LinearLayout>

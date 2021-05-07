@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.LoaiChi;
 import com.example.asm_android.Model.User;
@@ -97,7 +98,14 @@ public class AdapterKhoangChi extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
     public void CapNhatKhoangChi(){
         loaiChiDAO=new LoaiChiDAO(context);
-        ArrayList<LoaiChi> loaiChis=loaiChiDAO.getAllLoaiChi(((QuanLyThuChi)context).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)context).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)context).UserActive();
+        }
+        ArrayList<LoaiChi> loaiChis=loaiChiDAO.getAllLoaiChi(user.getId_user());
         arrayList1=new ArrayList<>();
         for(int i=0;i<loaiChis.size();i++){
             arrayList1.add(loaiChis.get(i).getId_loaichi());
@@ -155,7 +163,14 @@ public class AdapterKhoangChi extends RecyclerView.Adapter<RecyclerView.ViewHold
                     ImageView btnSuaNgayChi=view.findViewById(R.id.btnSuaNgayChi);
 
                     loaiChiDAO=new LoaiChiDAO(context);
-                    ArrayList<LoaiChi> loaiChis=loaiChiDAO.getAllLoaiChi(((QuanLyThuChi)context).UserActive().getId_user());
+                    User user;
+                    try{
+                        user=((QuanLyThuChi)context).UserActive();
+                    }
+                    catch (Exception exception){
+                        user=((MainActivity2)context).UserActive();
+                    }
+                    ArrayList<LoaiChi> loaiChis=loaiChiDAO.getAllLoaiChi(user.getId_user());
                     ArrayList<String> arrayList=new ArrayList<String>();
                     for(int j=0;j<loaiChis.size();j++){
                         arrayList.add(loaiChis.get(j).getLoaichi_name());

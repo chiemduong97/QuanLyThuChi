@@ -14,10 +14,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.asm_android.MainActivity2;
 import com.example.asm_android.Model.KhoangChi;
 import com.example.asm_android.Model.KhoangThu;
 import com.example.asm_android.Model.LoaiChi;
 import com.example.asm_android.Model.LoaiThu;
+import com.example.asm_android.Model.User;
 import com.example.asm_android.QuanLyThuChi;
 import com.example.asm_android.R;
 import com.example.asm_android.SQLite.KhoangChiDAO;
@@ -177,7 +179,14 @@ public class AdapterLoaiThu extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return  check;
     }
     public void CapNhatLoaiThu(){
-        dsLoaiThu=loaiThuDAO.getAllLoaiThu(((QuanLyThuChi)context).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)context).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)context).UserActive();
+        }
+        dsLoaiThu=loaiThuDAO.getAllLoaiThu(user.getId_user());
         AdapterLoaiThu adapterLoaiThu=new AdapterLoaiThu(context,dsLoaiThu,recyclerView);
         recyclerView.setAdapter(adapterLoaiThu);
     }

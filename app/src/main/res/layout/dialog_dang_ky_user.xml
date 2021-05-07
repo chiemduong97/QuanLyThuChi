@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="ĐĂNG KÝ USER"
         android:textSize="16dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:padding="10dp"
         android:background="@color/orange"
@@ -19,7 +19,8 @@
         android:id="@+id/input9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tvDangKy"
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         >
         <EditText
             android:id="@+id/etDangKyTaiKhoan"
@@ -30,16 +31,16 @@
             android:hint="Tài khoản"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="5dp" />
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input9">
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
         <EditText
             android:id="@+id/etDangKyMatKhau"
             android:layout_width="match_parent"
@@ -49,16 +50,16 @@
             android:hint="Mật khẩu"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="5dp" />
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input10">
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        >
         <EditText
             android:id="@+id/etXacNhanMatKhau"
             android:layout_width="match_parent"
@@ -68,9 +69,7 @@
             android:hint="Xác nhận mật khẩu"
             android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:paddingLeft="5dp" />
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
