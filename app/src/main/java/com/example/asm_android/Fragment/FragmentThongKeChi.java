@@ -154,7 +154,14 @@ public class FragmentThongKeChi extends Fragment {
         ThongKeKhoangChiTenLoaiChi.setText(loaiChis.get(position).getLoaichi_name());
         RecyclerView recyclerView=view.findViewById(R.id.recyclerThongKeKhoangChi);
         LoaiChiDAO loaiChiDAO=new LoaiChiDAO(getContext());
-        ArrayList<LoaiChi> loaiChis=loaiChiDAO.getAllLoaiChi(((QuanLyThuChi)getContext()).UserActive().getId_user());
+        User user;
+        try{
+            user=((QuanLyThuChi)getContext()).UserActive();
+        }
+        catch (Exception exception){
+            user=((MainActivity2)getContext()).UserActive();
+        }
+        ArrayList<LoaiChi> loaiChis=loaiChiDAO.getAllLoaiChi(user.getId_user());
         ArrayList<Integer> arrayList1=new ArrayList<>();
         for(int i=0;i<loaiChis.size();i++){
             if(loaiChis.get(position).getId_loaichi()==loaiChis.get(i).getId_loaichi())
