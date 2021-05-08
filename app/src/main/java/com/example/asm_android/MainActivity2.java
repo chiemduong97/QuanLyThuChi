@@ -47,8 +47,10 @@ public class MainActivity2 extends AppCompatActivity {
                 toolbar.setTitle("QUẢN LÝ TÀI KHOẢN");
 
             }
-            else
+            else{
                 Toast.makeText(MainActivity2.this,"Bạn không có quyền truy cập!",Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
         if(position==1){
             FragmentManager fragmentManager=getSupportFragmentManager();
